@@ -9,8 +9,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
+    @ObservedObject private var viewModel: RMCharacterViewModel = RMCharacterViewModel()
+    
     var body: some View {
-        Text("Hello, World!")
+        ZStack {
+            Color.init(colorScheme == .dark ? .systemBlue : .systemIndigo)
+            NavigationView {
+                List(viewModel.characters.results, id: \.id) { character in
+                    Text(character.name ?? "yok ki")
+                }
+            }
+        }
     }
 }
 
