@@ -7,7 +7,7 @@
 //
 
 import Combine
-import Foundation
+import UIKit.UIImage
 
 final class RMCharacterViewModel: ObservableObject {
     private lazy var service = NetworkService()
@@ -15,7 +15,7 @@ final class RMCharacterViewModel: ObservableObject {
     
     @Published var characters = RMWorld(info: nil, results: [RMWorldResult]())
     
-    init() {
+    func getCharacters() {
         let request = RMCharacterRequest()
         cancellable = service
             .baseRequest(request: request)

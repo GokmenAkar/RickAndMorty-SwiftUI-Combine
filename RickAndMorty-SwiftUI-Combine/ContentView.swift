@@ -12,14 +12,18 @@ struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var viewModel: RMCharacterViewModel = RMCharacterViewModel()
     
+    var sayi: Int = 0
     var body: some View {
         ZStack {
             Color.init(colorScheme == .dark ? .systemBlue : .systemIndigo)
             NavigationView {
                 List(viewModel.characters.results, id: \.id) { character in
-                    Text(character.name ?? "yok ki")
+                    CharacterCell(character: character)
+                    
                 }
             }
+        }.onAppear {
+            self.viewModel.getCharacters()
         }
     }
 }

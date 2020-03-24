@@ -20,6 +20,10 @@
 		8BA521842428D6AE009888AF /* RMWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521832428D6AE009888AF /* RMWorld.swift */; };
 		8BA521862428D98B009888AF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521852428D98B009888AF /* NetworkService.swift */; };
 		8BA521882428DAF4009888AF /* APIBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521872428DAF4009888AF /* APIBaseRequest.swift */; };
+		8BDE2648242A2A3F00797556 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE2647242A2A3F00797556 /* ImageLoader.swift */; };
+		8BDE264A242A2C3600797556 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE2649242A2C3600797556 /* CharacterCell.swift */; };
+		8BDE264E242A2C7800797556 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE264D242A2C7800797556 /* AsyncImage.swift */; };
+		8BDE2650242A363300797556 /* TemporaryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE264F242A363300797556 /* TemporaryImageCache.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +42,10 @@
 		8BA521832428D6AE009888AF /* RMWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMWorld.swift; sourceTree = "<group>"; };
 		8BA521852428D98B009888AF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8BA521872428DAF4009888AF /* APIBaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseRequest.swift; sourceTree = "<group>"; };
+		8BDE2647242A2A3F00797556 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		8BDE2649242A2C3600797556 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
+		8BDE264D242A2C7800797556 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
+		8BDE264F242A363300797556 /* TemporaryImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryImageCache.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +62,10 @@
 		8B94BBCF2428E27C0061DD3A /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				8B94BBD02428E2930061DD3A /* RMCharacterRequest.swift */,
+				8BDE264C242A2C6600797556 /* AsyncImage */,
+				8BDE264B242A2C3B00797556 /* Cell */,
+				8BDE26462429FF7800797556 /* Request */,
+				8BDE26452429FF7000797556 /* Model */,
 				8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */,
 			);
 			path = UI;
@@ -106,6 +117,8 @@
 			children = (
 				8BA521872428DAF4009888AF /* APIBaseRequest.swift */,
 				8BA521852428D98B009888AF /* NetworkService.swift */,
+				8BDE2647242A2A3F00797556 /* ImageLoader.swift */,
+				8BDE264F242A363300797556 /* TemporaryImageCache.swift */,
 			);
 			name = Service;
 			path = "New Group";
@@ -114,11 +127,42 @@
 		8BA521822428D698009888AF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				8BA521832428D6AE009888AF /* RMWorld.swift */,
 				8B94BBCB2428DDA60061DD3A /* EndPoints.swift */,
 				8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8BDE26452429FF7000797556 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8BA521832428D6AE009888AF /* RMWorld.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8BDE26462429FF7800797556 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				8B94BBD02428E2930061DD3A /* RMCharacterRequest.swift */,
+			);
+			path = Request;
+			sourceTree = "<group>";
+		};
+		8BDE264B242A2C3B00797556 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8BDE2649242A2C3600797556 /* CharacterCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8BDE264C242A2C6600797556 /* AsyncImage */ = {
+			isa = PBXGroup;
+			children = (
+				8BDE264D242A2C7800797556 /* AsyncImage.swift */,
+			);
+			path = AsyncImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,12 +239,16 @@
 				8BA521862428D98B009888AF /* NetworkService.swift in Sources */,
 				8BA5216E2428D2B1009888AF /* AppDelegate.swift in Sources */,
 				8B94BBD12428E2930061DD3A /* RMCharacterRequest.swift in Sources */,
+				8BDE264A242A2C3600797556 /* CharacterCell.swift in Sources */,
 				8BA521702428D2B1009888AF /* SceneDelegate.swift in Sources */,
 				8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */,
+				8BDE2648242A2A3F00797556 /* ImageLoader.swift in Sources */,
 				8B94BBCE2428E1120061DD3A /* HTTPMethod.swift in Sources */,
 				8BA521722428D2B1009888AF /* ContentView.swift in Sources */,
 				8BA521882428DAF4009888AF /* APIBaseRequest.swift in Sources */,
+				8BDE2650242A363300797556 /* TemporaryImageCache.swift in Sources */,
 				8BA521842428D6AE009888AF /* RMWorld.swift in Sources */,
+				8BDE264E242A2C7800797556 /* AsyncImage.swift in Sources */,
 				8B7779A92428EA27007E4BEA /* RMCharacterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
