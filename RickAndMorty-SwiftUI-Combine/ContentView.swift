@@ -19,10 +19,12 @@ struct ContentView: View {
             NavigationView {
                 List(viewModel.characters.results, id: \.id) { character in
                     CharacterCell(character: character)
-                    
                 }
+                .navigationBarTitle("Characters")
             }
-        }.onAppear {
+        }
+//        .edgesIgnoringSafeArea(.all)
+        .onAppear {
             self.viewModel.getCharacters()
         }
     }

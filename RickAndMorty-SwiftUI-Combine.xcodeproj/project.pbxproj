@@ -24,9 +24,11 @@
 		8BDE264A242A2C3600797556 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE2649242A2C3600797556 /* CharacterCell.swift */; };
 		8BDE264E242A2C7800797556 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE264D242A2C7800797556 /* AsyncImage.swift */; };
 		8BDE2650242A363300797556 /* TemporaryImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE264F242A363300797556 /* TemporaryImageCache.swift */; };
+		AC92DED1C7F4AE25BC96882C /* Pods_RickAndMorty_SwiftUI_Combine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3A8AAD17E1322D3D4CBD016 /* Pods_RickAndMorty_SwiftUI_Combine.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		33ECFBC46BB0ED6280FE4AF4 /* Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig"; path = "Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig"; sourceTree = "<group>"; };
 		8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewModel.swift; sourceTree = "<group>"; };
 		8B94BBCB2428DDA60061DD3A /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -46,6 +48,8 @@
 		8BDE2649242A2C3600797556 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		8BDE264D242A2C7800797556 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
 		8BDE264F242A363300797556 /* TemporaryImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemporaryImageCache.swift; sourceTree = "<group>"; };
+		B3A8AAD17E1322D3D4CBD016 /* Pods_RickAndMorty_SwiftUI_Combine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RickAndMorty_SwiftUI_Combine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DEF6B76C4BD5712F43BF5DFE /* Pods-RickAndMorty-SwiftUI-Combine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty-SwiftUI-Combine.debug.xcconfig"; path = "Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,12 +57,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AC92DED1C7F4AE25BC96882C /* Pods_RickAndMorty_SwiftUI_Combine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		04460733CCB586EAA6EAEF6B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B3A8AAD17E1322D3D4CBD016 /* Pods_RickAndMorty_SwiftUI_Combine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		8B94BBCF2428E27C0061DD3A /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +89,8 @@
 			children = (
 				8BA5216C2428D2B1009888AF /* RickAndMorty-SwiftUI-Combine */,
 				8BA5216B2428D2B1009888AF /* Products */,
+				EF9934419A3F78A928E2A30D /* Pods */,
+				04460733CCB586EAA6EAEF6B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -165,6 +180,16 @@
 			path = AsyncImage;
 			sourceTree = "<group>";
 		};
+		EF9934419A3F78A928E2A30D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEF6B76C4BD5712F43BF5DFE /* Pods-RickAndMorty-SwiftUI-Combine.debug.xcconfig */,
+				33ECFBC46BB0ED6280FE4AF4 /* Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -172,9 +197,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8BA5217E2428D2B6009888AF /* Build configuration list for PBXNativeTarget "RickAndMorty-SwiftUI-Combine" */;
 			buildPhases = (
+				33B4EB6E6DDCCC50D486D38D /* [CP] Check Pods Manifest.lock */,
 				8BA521662428D2B1009888AF /* Sources */,
 				8BA521672428D2B1009888AF /* Frameworks */,
 				8BA521682428D2B1009888AF /* Resources */,
+				FA8EB4BCC9FE370D4987D975 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -230,6 +257,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		33B4EB6E6DDCCC50D486D38D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-RickAndMorty-SwiftUI-Combine-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA8EB4BCC9FE370D4987D975 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8BA521662428D2B1009888AF /* Sources */ = {
@@ -383,6 +452,7 @@
 		};
 		8BA5217F2428D2B6009888AF /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DEF6B76C4BD5712F43BF5DFE /* Pods-RickAndMorty-SwiftUI-Combine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -403,6 +473,7 @@
 		};
 		8BA521802428D2B6009888AF /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 33ECFBC46BB0ED6280FE4AF4 /* Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

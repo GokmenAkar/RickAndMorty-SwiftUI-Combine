@@ -7,27 +7,41 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct CharacterCell: View {
     var url: URL
     var name: String
+    @State var isSetImage: Bool = false
     init(character: RMWorldResult) {
-        url = URL(string: character.image ?? "https://image.tmdb.org/t/p/original/pThyQovXQrw2m0s9x82twj48Jq4.jpg")!
+        url = URL(string: character.image!)!
         name = character.name ?? "no name"
     }
     
     var body: some View {
         HStack {
-            AsyncImage(url: url,
-                       placeholder: Text("Loading..."))
-                .frame(width: 64, height: 64)
+            WebImage(url: url)
+                .onSuccess { image, cacheType in
+
+            }
+            .resizable()
+            .placeholder(Image(systemName: "photo"))
+            .placeholder {
+                Rectangle().foregroundColor(Color(.lightGray))
+            }
+                .indicator(.activity) // Activity Indicator
+                .animation(.easeInOut(duration: 0.5)) // Animation Duration
+                .transition(.fade) // Fade Transition
+                .scaledToFit()
+                .frame(width: 64, height: 64, alignment: .center)
                 .clipShape(Circle())
                 .overlay(Circle().stroke(Color(red: 151/255, green: 206/255, blue: 76/255), lineWidth: 2))
                 .shadow(radius: 8)
                 .padding(8)
-            
             Text(name)
-        }.font(.system(size: 10))
+                .font(.headline)
+                
+        }
     }
 }
 
