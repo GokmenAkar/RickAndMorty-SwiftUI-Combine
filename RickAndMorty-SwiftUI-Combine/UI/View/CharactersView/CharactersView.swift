@@ -14,16 +14,16 @@ struct ContentView: View {
     
     var sayi: Int = 0
     var body: some View {
-        ZStack {
-            Color.init(colorScheme == .dark ? .systemBlue : .systemIndigo)
-            NavigationView {
+        NavigationView {
+            ZStack {
+                Color.init(colorScheme == .dark ? .systemBlue : .systemIndigo)
                 List(viewModel.characters.results, id: \.id) { character in
                     CharacterCell(character: character)
+                    
                 }
-                .navigationBarTitle("Characters")
             }
+            .navigationBarTitle("Characters")
         }
-//        .edgesIgnoringSafeArea(.all)
         .onAppear {
             self.viewModel.getCharacters()
         }

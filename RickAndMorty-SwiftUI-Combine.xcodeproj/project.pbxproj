@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,9 +11,10 @@
 		8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBCB2428DDA60061DD3A /* EndPoints.swift */; };
 		8B94BBCE2428E1120061DD3A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */; };
 		8B94BBD12428E2930061DD3A /* RMCharacterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBD02428E2930061DD3A /* RMCharacterRequest.swift */; };
+		8B94BE90242BD10300AE6FAA /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BE8F242BD10300AE6FAA /* DetailView.swift */; };
 		8BA5216E2428D2B1009888AF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5216D2428D2B1009888AF /* AppDelegate.swift */; };
 		8BA521702428D2B1009888AF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA5216F2428D2B1009888AF /* SceneDelegate.swift */; };
-		8BA521722428D2B1009888AF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521712428D2B1009888AF /* ContentView.swift */; };
+		8BA521722428D2B1009888AF /* CharactersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521712428D2B1009888AF /* CharactersView.swift */; };
 		8BA521742428D2B6009888AF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA521732428D2B6009888AF /* Assets.xcassets */; };
 		8BA521772428D2B6009888AF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8BA521762428D2B6009888AF /* Preview Assets.xcassets */; };
 		8BA5217A2428D2B6009888AF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8BA521782428D2B6009888AF /* LaunchScreen.storyboard */; };
@@ -33,10 +34,11 @@
 		8B94BBCB2428DDA60061DD3A /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
 		8B94BBD02428E2930061DD3A /* RMCharacterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterRequest.swift; sourceTree = "<group>"; };
+		8B94BE8F242BD10300AE6FAA /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		8BA5216A2428D2B1009888AF /* RickAndMorty-SwiftUI-Combine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "RickAndMorty-SwiftUI-Combine.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8BA5216D2428D2B1009888AF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8BA5216F2428D2B1009888AF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8BA521712428D2B1009888AF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8BA521712428D2B1009888AF /* CharactersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersView.swift; sourceTree = "<group>"; };
 		8BA521732428D2B6009888AF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8BA521762428D2B6009888AF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8BA521792428D2B6009888AF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -75,13 +77,31 @@
 		8B94BBCF2428E27C0061DD3A /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				8B94BE8D242BD0B100AE6FAA /* View */,
 				8BDE264C242A2C6600797556 /* AsyncImage */,
-				8BDE264B242A2C3B00797556 /* Cell */,
-				8BDE26462429FF7800797556 /* Request */,
-				8BDE26452429FF7000797556 /* Model */,
-				8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		8B94BE8D242BD0B100AE6FAA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8B94BE8E242BD0B600AE6FAA /* CharactersView */,
+				8B94BE8F242BD10300AE6FAA /* DetailView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8B94BE8E242BD0B600AE6FAA /* CharactersView */ = {
+			isa = PBXGroup;
+			children = (
+				8BDE26462429FF7800797556 /* Request */,
+				8BDE26452429FF7000797556 /* Model */,
+				8BDE264B242A2C3B00797556 /* Cell */,
+				8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */,
+				8BA521712428D2B1009888AF /* CharactersView.swift */,
+			);
+			path = CharactersView;
 			sourceTree = "<group>";
 		};
 		8BA521612428D2B1009888AF = {
@@ -110,7 +130,6 @@
 				8B94BBCF2428E27C0061DD3A /* UI */,
 				8BA5216D2428D2B1009888AF /* AppDelegate.swift */,
 				8BA5216F2428D2B1009888AF /* SceneDelegate.swift */,
-				8BA521712428D2B1009888AF /* ContentView.swift */,
 				8BA521732428D2B6009888AF /* Assets.xcassets */,
 				8BA521782428D2B6009888AF /* LaunchScreen.storyboard */,
 				8BA5217B2428D2B6009888AF /* Info.plist */,
@@ -186,7 +205,6 @@
 				DEF6B76C4BD5712F43BF5DFE /* Pods-RickAndMorty-SwiftUI-Combine.debug.xcconfig */,
 				33ECFBC46BB0ED6280FE4AF4 /* Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -313,11 +331,12 @@
 				8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */,
 				8BDE2648242A2A3F00797556 /* ImageLoader.swift in Sources */,
 				8B94BBCE2428E1120061DD3A /* HTTPMethod.swift in Sources */,
-				8BA521722428D2B1009888AF /* ContentView.swift in Sources */,
+				8BA521722428D2B1009888AF /* CharactersView.swift in Sources */,
 				8BA521882428DAF4009888AF /* APIBaseRequest.swift in Sources */,
 				8BDE2650242A363300797556 /* TemporaryImageCache.swift in Sources */,
 				8BA521842428D6AE009888AF /* RMWorld.swift in Sources */,
 				8BDE264E242A2C7800797556 /* AsyncImage.swift in Sources */,
+				8B94BE90242BD10300AE6FAA /* DetailView.swift in Sources */,
 				8B7779A92428EA27007E4BEA /* RMCharacterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
