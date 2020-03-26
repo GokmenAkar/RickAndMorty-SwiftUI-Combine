@@ -9,7 +9,15 @@
 import Foundation
 
 class RMCharacterRequest: BaseAPIRequest<RMWorld> {
+    var page: Int = 0 
+    
     override var endPoint: EndPoints {
         return .character
+    }
+    
+    override var queryItems: [URLQueryItem]? {
+        return [
+            URLQueryItem(name: "page", value: "\(page)")
+        ]
     }
 }

@@ -15,12 +15,20 @@ final class RMCharacterViewModel: ObservableObject {
     
     @Published var characters = RMWorld(info: nil, results: [RMWorldResult]())
     
+    var page: Int = 0
+    
     func getCharacters() {
         let request = RMCharacterRequest()
+        page += 1
+        request.page = page 
         cancellable = service
             .baseRequest(request: request)
             .receive(on: RunLoop.main)
             .catch { _ in Just(self.characters) }
-            .assign(to: \.characters, on: self)
+            .sink(receiveCompletion: { (_) in
+                
+            }, receiveValue: { (value) in
+                self.characters.results += value.results
+            })
     }
 }

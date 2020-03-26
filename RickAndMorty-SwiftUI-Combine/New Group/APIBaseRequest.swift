@@ -16,6 +16,9 @@ class BaseAPIRequest<T: Codable> {
     
     var contentType: String { "application/json" }
     var httpMethod: HTTPMethod { .get }
+    
+    var queryItems: [URLQueryItem]? { nil }
+    
 }
 
 

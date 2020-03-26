@@ -27,11 +27,14 @@ final class NetworkService {
 extension NetworkService {
     func urlRequestWith<T>(request: BaseAPIRequest<T>) -> URLRequest? {
         let completeURL: String =
-            request.baseURL +
+                request.baseURL +
                 request.apiPath +
                 request.endPoint.description
         
-        var urlRequest: URLRequest = URLRequest(url: URL(string: completeURL)!)
+        var urlComponents: URLComponents = URLComponents(string: completeURL)!
+        urlComponents.queryItems = request.queryItems
+        
+        var urlRequest: URLRequest = URLRequest(url: urlComponents.url!)
         urlRequest.httpMethod = request.httpMethod.description
         urlRequest.setValue(request.contentType, forHTTPHeaderField: "Content-Type")
         print(urlRequest)
