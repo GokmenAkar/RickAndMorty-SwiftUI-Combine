@@ -6,7 +6,8 @@
 //  Copyright © 2020 Developer. All rights reserved.
 //
 
-import Foundation
+
+import SwiftUI
 
 // MARK: - RMWorld
 struct RMWorld: Codable {
@@ -54,7 +55,11 @@ struct RMWorld: Codable {
             "https://rickandmortyapi.com/api/character/356",
             "https://rickandmortyapi.com/api/character/394"
         ]
+        
         return [
+            RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
+            RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
+            RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
             RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created)
         ]
     }
@@ -79,6 +84,7 @@ struct RMWorldResult: Codable, Identifiable {
     
     //For Episode
     let air_date: String?
+    
     
 }
 
@@ -106,6 +112,17 @@ enum Status: String, Codable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
+    
+    func statusColor() -> Color {
+        switch self {
+        case .alive:
+            return .green
+        case .dead:
+            return .red
+        case .unknown:
+            return .orange
+        }
+    }
 }
 
 

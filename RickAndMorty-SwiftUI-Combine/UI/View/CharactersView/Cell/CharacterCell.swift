@@ -10,37 +10,20 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct CharacterCell: View {
-    var url: URL
+    var url: String
     var name: String
     @State var isSetImage: Bool = false
+    
     init(character: RMWorldResult) {
-        url = URL(string: character.image!)!
+        url = character.image!
         name = character.name ?? "no name"
     }
     
     var body: some View {
         HStack {
-            WebImage(url: url)
-                .onSuccess { image, cacheType in
-
-            }
-            .resizable()
-            .placeholder(Image(systemName: "photo"))
-            .placeholder {
-                Rectangle().foregroundColor(Color(.lightGray))
-            }
-                .indicator(.activity) // Activity Indicator
-                .animation(.easeInOut(duration: 0.5)) // Animation Duration
-                .transition(.fade) // Fade Transition
-                .scaledToFit()
-                .frame(width: 64, height: 64, alignment: .center)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color(red: 151/255, green: 206/255, blue: 76/255), lineWidth: 2))
-                .shadow(radius: 8)
-                .padding(8)
+            CircleImage(imageURL: url)
             Text(name)
                 .font(.headline)
-                
         }
     }
 }

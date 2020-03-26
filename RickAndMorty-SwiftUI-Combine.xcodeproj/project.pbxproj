@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8B09258C242D20D2009991F5 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09258B242D20D2009991F5 /* InfoView.swift */; };
 		8B7779A92428EA27007E4BEA /* RMCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */; };
 		8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBCB2428DDA60061DD3A /* EndPoints.swift */; };
 		8B94BBCE2428E1120061DD3A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */; };
@@ -21,6 +22,7 @@
 		8BA521842428D6AE009888AF /* RMWorld.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521832428D6AE009888AF /* RMWorld.swift */; };
 		8BA521862428D98B009888AF /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521852428D98B009888AF /* NetworkService.swift */; };
 		8BA521882428DAF4009888AF /* APIBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BA521872428DAF4009888AF /* APIBaseRequest.swift */; };
+		8BC28FF5242BE66600F6B581 /* CircleImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BC28FF4242BE66600F6B581 /* CircleImage.swift */; };
 		8BDE2648242A2A3F00797556 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE2647242A2A3F00797556 /* ImageLoader.swift */; };
 		8BDE264A242A2C3600797556 /* CharacterCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE2649242A2C3600797556 /* CharacterCell.swift */; };
 		8BDE264E242A2C7800797556 /* AsyncImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDE264D242A2C7800797556 /* AsyncImage.swift */; };
@@ -30,6 +32,7 @@
 
 /* Begin PBXFileReference section */
 		33ECFBC46BB0ED6280FE4AF4 /* Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig"; path = "Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig"; sourceTree = "<group>"; };
+		8B09258B242D20D2009991F5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewModel.swift; sourceTree = "<group>"; };
 		8B94BBCB2428DDA60061DD3A /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -46,6 +49,7 @@
 		8BA521832428D6AE009888AF /* RMWorld.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMWorld.swift; sourceTree = "<group>"; };
 		8BA521852428D98B009888AF /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		8BA521872428DAF4009888AF /* APIBaseRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIBaseRequest.swift; sourceTree = "<group>"; };
+		8BC28FF4242BE66600F6B581 /* CircleImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleImage.swift; sourceTree = "<group>"; };
 		8BDE2647242A2A3F00797556 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		8BDE2649242A2C3600797556 /* CharacterCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterCell.swift; sourceTree = "<group>"; };
 		8BDE264D242A2C7800797556 /* AsyncImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImage.swift; sourceTree = "<group>"; };
@@ -86,8 +90,9 @@
 		8B94BE8D242BD0B100AE6FAA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8BC28FF3242BE59500F6B581 /* HelperViews */,
 				8B94BE8E242BD0B600AE6FAA /* CharactersView */,
-				8B94BE8F242BD10300AE6FAA /* DetailView.swift */,
+				8BC28FF6242BE92400F6B581 /* DetailView */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -165,6 +170,23 @@
 				8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		8BC28FF3242BE59500F6B581 /* HelperViews */ = {
+			isa = PBXGroup;
+			children = (
+				8BC28FF4242BE66600F6B581 /* CircleImage.swift */,
+				8B09258B242D20D2009991F5 /* InfoView.swift */,
+			);
+			path = HelperViews;
+			sourceTree = "<group>";
+		};
+		8BC28FF6242BE92400F6B581 /* DetailView */ = {
+			isa = PBXGroup;
+			children = (
+				8B94BE8F242BD10300AE6FAA /* DetailView.swift */,
+			);
+			path = DetailView;
 			sourceTree = "<group>";
 		};
 		8BDE26452429FF7000797556 /* Model */ = {
@@ -324,8 +346,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				8BA521862428D98B009888AF /* NetworkService.swift in Sources */,
+				8BC28FF5242BE66600F6B581 /* CircleImage.swift in Sources */,
 				8BA5216E2428D2B1009888AF /* AppDelegate.swift in Sources */,
 				8B94BBD12428E2930061DD3A /* RMCharacterRequest.swift in Sources */,
+				8B09258C242D20D2009991F5 /* InfoView.swift in Sources */,
 				8BDE264A242A2C3600797556 /* CharacterCell.swift in Sources */,
 				8BA521702428D2B1009888AF /* SceneDelegate.swift in Sources */,
 				8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */,
