@@ -25,9 +25,7 @@ final class RMCharacterViewModel: ObservableObject {
             .baseRequest(request: request)
             .receive(on: RunLoop.main)
             .catch { _ in Just(self.characters) }
-            .sink(receiveCompletion: { (_) in
-                
-            }, receiveValue: { (value) in
+            .sink(receiveValue: { (value) in
                 self.characters.results += value.results
             })
     }
