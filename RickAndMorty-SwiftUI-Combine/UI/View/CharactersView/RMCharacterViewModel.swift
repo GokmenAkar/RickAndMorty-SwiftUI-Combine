@@ -13,20 +13,29 @@ final class RMCharacterViewModel: ObservableObject {
     private lazy var service = NetworkService()
     private var cancellable: AnyCancellable?
     
+    let request = RMCharacterRequest()
+
     @Published var characters = RMWorld(info: nil, results: [RMWorldResult]())
     
-    var page: Int = 0
+    var isLoading:Bool = false
     
     func getCharacters() {
-        let request = RMCharacterRequest()
-        page += 1
-        request.page = page 
+        if isLoading { return }
+        isLoading = true
+        
+        request.page += 1
+        
         cancellable = service
             .baseRequest(request: request)
             .receive(on: RunLoop.main)
-            .catch { _ in Just(self.characters) }
-            .sink(receiveValue: { (value) in
-                self.characters.results += value.results
+            .catch { _ in Just(self.characters)}
+            .sink(receiveValue: { [weak self] (value) in
+                self!.isLoading = false
+                self?.characters.results += value.results
             })
+    }
+    
+    deinit {
+        cancellable = nil
     }
 }
