@@ -21,7 +21,9 @@ struct CharactersView: View {
                     if index == self.viewModel.characters.results.count {
                         LastCell(vm: self.viewModel)
                     } else {
+                        NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
                         CharacterCell(character: self.viewModel.characters.results[index])
+                        }
                     }
                 }
             }

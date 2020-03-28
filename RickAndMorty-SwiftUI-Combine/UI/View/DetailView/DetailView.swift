@@ -11,10 +11,15 @@ import SDWebImageSwiftUI
 
 struct DetailView: View {
     let detail: RMWorldResult!
+    
+    @State var animateImage: Bool = false
     var body: some View {
         VStack(spacing: 12) {
             CircleImage(imageURL: detail.image ?? "",
                         imageSize: CGSize(width: 162, height: 162))
+                .onTapGesture {
+                    self.animateImage = true
+            }
             
             Text(detail.name ?? "")
                 .font(.title)
