@@ -12,13 +12,13 @@ struct CharactersView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var viewModel: RMCharacterViewModel = RMCharacterViewModel()
     
-    var sayi: Int = 0
     var body: some View {
         NavigationView {
             ZStack {
                 VStack {
-                    SearchBar(searchText: .constant("Search"))
-                        
+                    if !viewModel.isSearchBarHidden {
+                        SearchBar(searchText: .constant(""))
+                    }
                     List(0...viewModel.characters.results.count, id: \.self) { index in
                         if index == self.viewModel.characters.results.count {
                             LastCell(vm: self.viewModel)
@@ -29,19 +29,27 @@ struct CharactersView: View {
                         }
                     }
                 }
-                
             }
             .navigationBarTitle("Characters", displayMode: .inline)
         }
-        .onAppear {
-            self.viewModel.getCharacters()
+        .gesture(DragGesture()
+        .onChanged { value in
+            print("startY:", value.startLocation.y, "changeY:", value.location.y)
+            withAnimation {
+
+                self.viewModel.hideSearchBar(startY: value.startLocation.y, changeY: value.location.y)
+            }
+            }
+        )
+            .onAppear {
+                self.viewModel.getCharacters()
         }
     }
 }
 
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView().environment(\.colorScheme, .dark)
+        CharactersView()//.environment(\.colorScheme, .dark)
     }
 }
 
@@ -51,20 +59,29 @@ struct SearchBar : View {
     
     var body: some View {
         HStack {
-            Image(systemName: "magnifyingglass")
+            Image(systemName: "magnifyingglass").padding(12)
+            
             TextField("Search", text: $searchText) {
-
+                UIApplication
+                    .shared
+                    .windows
+                    .filter { $0.isKeyWindow }
+                    .first?
+                    .endEditing(true)
             }
             Button(action: {
                 self.searchText = ""
             }) {
                 Image(systemName: "xmark.circle.fill")
                     .opacity(searchText == "" ? 0 : 1)
+                    .padding(.horizontal, 12)
                 
             }
         }
-        .foregroundColor(colorScheme == .dark ? .black : .white)
-        .background(Color.primary)
-
+        .foregroundColor(colorScheme == .dark ? .white : .black)
+        .background(colorScheme == .dark ? Color(.darkGray) : Color(.systemGray6))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray, lineWidth: 1))
+        .padding(4)
+        
     }
 }

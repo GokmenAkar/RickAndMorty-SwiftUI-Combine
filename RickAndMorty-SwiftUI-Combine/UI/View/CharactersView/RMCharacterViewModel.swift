@@ -19,6 +19,8 @@ final class RMCharacterViewModel: ObservableObject {
     
     var isLoading:Bool = false
     
+    @Published var isSearchBarHidden: Bool = false
+    
     func getCharacters() {
         if isLoading { return }
         isLoading = true
@@ -33,6 +35,10 @@ final class RMCharacterViewModel: ObservableObject {
                 self!.isLoading = false
                 self?.characters.results += value.results
             })
+    }
+    
+    func hideSearchBar(startY: CGFloat, changeY: CGFloat) {
+        isSearchBarHidden = startY > changeY
     }
     
     deinit {
