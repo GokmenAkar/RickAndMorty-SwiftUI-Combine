@@ -16,16 +16,20 @@ struct CharactersView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.init(colorScheme == .dark ? .systemBlue : .systemIndigo)
-                List(0...viewModel.characters.results.count, id: \.self) { index in
-                    if index == self.viewModel.characters.results.count {
-                        LastCell(vm: self.viewModel)
-                    } else {
-                        NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
-                        CharacterCell(character: self.viewModel.characters.results[index])
+                VStack {
+                    SearchBar(searchText: .constant("Search"))
+                        
+                    List(0...viewModel.characters.results.count, id: \.self) { index in
+                        if index == self.viewModel.characters.results.count {
+                            LastCell(vm: self.viewModel)
+                        } else {
+                            NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
+                                CharacterCell(character: self.viewModel.characters.results[index])
+                            }
                         }
                     }
                 }
+                
             }
             .navigationBarTitle("Characters", displayMode: .inline)
         }
@@ -37,6 +41,30 @@ struct CharactersView: View {
 
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView()
+        CharactersView().environment(\.colorScheme, .dark)
+    }
+}
+
+struct SearchBar : View {
+    @Binding var searchText: String
+    @Environment(\.colorScheme) var colorScheme
+    
+    var body: some View {
+        HStack {
+            Image(systemName: "magnifyingglass")
+            TextField("Search", text: $searchText) {
+
+            }
+            Button(action: {
+                self.searchText = ""
+            }) {
+                Image(systemName: "xmark.circle.fill")
+                    .opacity(searchText == "" ? 0 : 1)
+                
+            }
+        }
+        .foregroundColor(colorScheme == .dark ? .black : .white)
+        .background(Color.primary)
+
     }
 }

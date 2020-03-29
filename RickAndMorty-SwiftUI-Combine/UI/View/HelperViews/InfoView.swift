@@ -24,10 +24,13 @@ struct InfoView: View {
     
     var body: some View {
         HStack(alignment: .top) {
-            Text("\(infoTitle):").font(.system(Font.TextStyle.body, design: Font.Design.monospaced))
+            Text("\(infoTitle):")
+                .font(.system(Font.TextStyle.body, design: Font.Design.monospaced))
+                .foregroundColor(.secondary)
             Spacer()
             HStack(spacing: 6) {
                 Text(info)
+                    .foregroundColor(.primary)
                     .fontWeight(.light)
                 if isStatus {
                     Circle()
