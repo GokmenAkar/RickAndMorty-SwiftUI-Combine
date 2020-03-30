@@ -9,40 +9,54 @@
 import SwiftUI
 
 struct StatusView: View {
-    @State var status: Status
+    @Binding var status: Status
     
     var body: some View {
-        HStack {
+        HStack(spacing: 16) {
             Text("status:")
                 .foregroundColor(.gray)
                 .font(.caption)
                 .font(.system(size: 12))
             
-            Button(action: {
-                self.status = .alive
-            }) {
-                Text("Alive")
-            }.modifier(ButtonModifier(status: .alive, isSelected: self.status == .alive))
-            
-            Button(action: {
-                self.status = .dead
-            }) {
-                Text("Dead")
-            }.modifier(ButtonModifier(status: .dead, isSelected: self.status == .dead))
-            
-            Button(action: {
-                self.status = .unknown
-            }) {
-                Text("Unknown")
-            }.modifier(ButtonModifier(status: .unknown, isSelected: self.status == .unknown))
+            HStack {
+                Button(action: {
+                    self.status = .all
+                }) {
+                    Text("All")
+                }
+                .modifier(ButtonModifier(status: .all, isSelected: self.status == .all))
+                
+                Button(action: {
+                    self.status = .alive
+                }) {
+                    Text("Alive")
+                }
+                .modifier(ButtonModifier(status: .alive, isSelected: self.status == .alive))
+                
+                Button(action: {
+                    self.status = .dead
+                }) {
+                    Text("Dead")
+                }
+                .modifier(ButtonModifier(status: .dead, isSelected: self.status == .dead))
+                
+                Button(action: {
+                    self.status = .unknown
+                }) {
+                    Text("Unknown")
+                }
+                .modifier(ButtonModifier(status: .unknown, isSelected: self.status == .unknown))
+            }
+            Spacer()
         }
-        .padding()
+        .padding(.horizontal, 12)
+        .padding(.vertical, 4)
     }
 }
 
 struct StatusView_Previews: PreviewProvider {
     static var previews: some View {
-        StatusView(status: .dead).previewLayout(.sizeThatFits)
+        StatusView(status: .constant(.all)).previewLayout(.sizeThatFits)
     }
 }
 
@@ -50,24 +64,14 @@ struct ButtonModifier: ViewModifier {
     let status: Status
     let isSelected: Bool
     
-    var color: Color {
-        get {
-            switch status {
-            case .alive: return .green
-            case .dead: return .red
-            case .unknown: return .orange
-            }
-        }
-    }
-    
     func body(content: Content) -> some View {
         content
-            .frame(maxWidth: .infinity)
+            .frame(maxWidth: status == .all ? 32 : .infinity)
             .font(.system(size: 12))
-            .foregroundColor(color.opacity(isSelected ? 1.0 : 0.75))
+            .foregroundColor(status.statusColor().opacity(isSelected ? 1.0 : 0.75))
             .overlay(
                 RoundedRectangle(cornerRadius: 14)
-                    .stroke(color.opacity(isSelected ? 0.75 : 0.20), lineWidth: 2)
+                    .stroke(status.statusColor().opacity(isSelected ? 0.75 : 0.20), lineWidth: 2)
         )
     }
 }

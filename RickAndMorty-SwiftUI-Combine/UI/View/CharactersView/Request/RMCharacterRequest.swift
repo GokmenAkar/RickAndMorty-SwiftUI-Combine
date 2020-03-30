@@ -9,7 +9,7 @@
 import Foundation
 
 class RMCharacterRequest: BaseAPIRequest<RMWorld> {
-    var page: Int = 0 
+    var page: Int = 0
     
     override var endPoint: EndPoints {
         return .character

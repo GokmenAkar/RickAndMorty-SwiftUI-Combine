@@ -13,19 +13,26 @@ final class RMCharacterViewModel: ObservableObject {
     private lazy var service = NetworkService()
     private var cancellable: AnyCancellable?
     
-    let request = RMCharacterRequest()
+    lazy var request       = RMCharacterRequest()
     lazy var searchRequest = RMSearchRequest()
     
     @Published var characters = RMWorld(info: nil, results: [RMWorldResult]())
-    
-    var isLoading:Bool = false
-    
     @Published var isSearchBarHidden: Bool = false
     @Published var searchText: String = "" {
         didSet {
             searchCharacter(text: self.searchText)
         }
     }
+    
+    @Published var status: Status = .all {
+        didSet {
+            request.page = 0
+            characters.results.removeAll()
+            getCharacters()
+        }
+    }
+    
+    var isLoading:Bool = false
     
     func getCharacters() {
         if isLoading { return }
@@ -38,8 +45,15 @@ final class RMCharacterViewModel: ObservableObject {
             .receive(on: RunLoop.main)
             .catch { _ in Just(self.characters)}
             .sink(receiveValue: { [weak self] (value) in
-                self?.isLoading = false
-                self?.characters.results += value.results
+                guard let self = self else { return }
+                
+                self.isLoading = false
+                
+                if self.status != .all {
+                    self.characters.results += value.results.filter { $0.status == self.status }
+                } else {
+                    self.characters.results += value.results
+                }
             })
     }
     
@@ -56,15 +70,21 @@ final class RMCharacterViewModel: ObservableObject {
     }
     
     func searchCharacter(text: String) {
-        searchRequest.name = text.localizedLowercase
+        if isLoading { return }
+        isLoading = true
         
+        searchRequest.name   = text
+        searchRequest.status = status == .all ? "" : status.rawValue
+        self.characters.results.removeAll()
         cancellable = service
             .baseRequest(request: searchRequest)
             .debounce(for: 0.5, scheduler: RunLoop.main)
-            .catch { _ in Just(self.characters) }
-            .sink(receiveValue: { (value) in
-                print(value.results.count)
-            })
+            .catch { _ in  Just(self.characters) }
+        .sink(receiveCompletion: { _ in
+            self.isLoading = false
+        }, receiveValue: { (value) in
+            self.characters = value
+        })
     }
     
     deinit {

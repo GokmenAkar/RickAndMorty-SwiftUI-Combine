@@ -112,7 +112,7 @@ enum Status: String, Codable {
     case alive = "Alive"
     case dead = "Dead"
     case unknown = "unknown"
-    
+    case all = "All"
     func statusColor() -> Color {
         switch self {
         case .alive:
@@ -121,6 +121,8 @@ enum Status: String, Codable {
             return .red
         case .unknown:
             return .orange
+        case .all:
+            return .black
         }
     }
 }
