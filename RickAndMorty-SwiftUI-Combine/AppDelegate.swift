@@ -15,6 +15,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        UINavigationBar.appearance().largeTitleTextAttributes = [
+               .foregroundColor: UIColor(red: 2/255, green: 175/255, blue: 197/255, alpha: 1)
+        ]
+        UITableView.appearance().separatorStyle = .none
         return true
     }
 

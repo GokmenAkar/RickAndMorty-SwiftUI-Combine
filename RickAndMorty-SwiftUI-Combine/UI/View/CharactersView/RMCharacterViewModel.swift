@@ -75,16 +75,16 @@ final class RMCharacterViewModel: ObservableObject {
         
         searchRequest.name   = text
         searchRequest.status = status == .all ? "" : status.rawValue
-        self.characters.results.removeAll()
+
         cancellable = service
             .baseRequest(request: searchRequest)
             .debounce(for: 0.5, scheduler: RunLoop.main)
             .catch { _ in  Just(self.characters) }
-        .sink(receiveCompletion: { _ in
-            self.isLoading = false
-        }, receiveValue: { (value) in
-            self.characters = value
-        })
+            .sink(receiveCompletion: { _ in
+                self.isLoading = false
+            }, receiveValue: { (value) in
+                self.characters = value
+            })
     }
     
     deinit {

@@ -33,9 +33,9 @@ struct SearchBar : View {
                 
             }
         }
-        .foregroundColor(colorScheme == .dark ? .white : .black)
+        .foregroundColor(colorScheme == .dark ? .white : Color("Rick"))
         .background(colorScheme == .dark ? Color(.darkGray) : Color(.systemGray6))
-        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray, lineWidth: 1))
+        .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color("Rick"), lineWidth: 1))
         .padding(4)
         .padding(.bottom, 0)
         

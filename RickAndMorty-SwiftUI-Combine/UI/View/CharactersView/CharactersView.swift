@@ -11,42 +11,38 @@ import SwiftUI
 struct CharactersView: View {
     @Environment(\.colorScheme) var colorScheme
     @ObservedObject private var viewModel: RMCharacterViewModel = RMCharacterViewModel()
-     
+    
     var body: some View {
         NavigationView {
-            VStack {
-                if !viewModel.isSearchBarHidden {
-                    SearchBar(searchText: $viewModel.searchText)
-                    StatusView(status: $viewModel.status)
+            List {
+                VStack {
+                    SearchBar(searchText: self.$viewModel.searchText)
+                    StatusView(status: self.$viewModel.status)
                     Divider()
-                }
-                List(0...viewModel.characters.results.count, id: \.self) { index in
-                    if index == self.viewModel.characters.results.count {
-                        LastCell(vm: self.viewModel)
-                    } else {
-                        NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
+                }.disabled(true)
+                ForEach(0...self.viewModel.characters.results.count, id: \.self) { index in
+                    ZStack {
+                        if index == self.viewModel.characters.results.count {
+                            LastCell(vm: self.viewModel)
+                        } else {
+                            NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
+                                EmptyView()
+                            }.hidden()
                             CharacterCell(character: self.viewModel.characters.results[index])
                         }
                     }
                 }
             }
-            .navigationBarTitle("Characters", displayMode: .inline)
+            .navigationBarTitle("Characters", displayMode: .large)
         }
-        .gesture(DragGesture()
-        .onChanged { value in
-            withAnimation {
-                self.viewModel.hideSearchBar(startY: value.startLocation.y, changeY: value.location.y)
-            }
-            }
-        )
-            .onAppear {
-                self.viewModel.getCharacters()
+        .onAppear {
+            self.viewModel.getCharacters()
         }
     }
 }
 
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
-        CharactersView()//.environment(\.colorScheme, .dark)
+        CharactersView()
     }
 }

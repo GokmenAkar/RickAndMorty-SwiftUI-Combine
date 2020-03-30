@@ -19,10 +19,14 @@ struct CharacterCell: View {
     }
     
     var body: some View {
-        HStack {
-            CircleImage(imageURL: url)
-            Text(name)
-                .font(.headline)
+        VStack(alignment: .leading, spacing: 0) {
+            HStack {
+                CircleImage(imageURL: url)
+                Text(name)
+                    .font(.headline)
+                    .foregroundColor(Color("Rick"))
+            }
+            Divider()
         }
     }
 }

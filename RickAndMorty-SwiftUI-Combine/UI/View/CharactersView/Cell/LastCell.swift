@@ -13,6 +13,7 @@ struct LastCell: View {
     @State var see = false
     @State var degree: Double = 0.0
     @State var scale: CGFloat = 1
+    
     var body: some View {
         let gradientColor = Gradient(colors: [.pink, .purple])
         let linearGradient = LinearGradient(gradient: gradientColor,

@@ -20,37 +20,42 @@ struct StatusView: View {
             
             HStack {
                 Button(action: {
-                    self.status = .all
+                    self.changeStatus(status: .all)
                 }) {
                     Text("All")
                 }
                 .modifier(ButtonModifier(status: .all, isSelected: self.status == .all))
                 
                 Button(action: {
-                    self.status = .alive
+                    self.changeStatus(status: .alive)
                 }) {
                     Text("Alive")
                 }
                 .modifier(ButtonModifier(status: .alive, isSelected: self.status == .alive))
                 
                 Button(action: {
-                    self.status = .dead
+                    self.changeStatus(status: .dead)
                 }) {
                     Text("Dead")
                 }
                 .modifier(ButtonModifier(status: .dead, isSelected: self.status == .dead))
                 
                 Button(action: {
-                    self.status = .unknown
+                    self.changeStatus(status: .unknown)
                 }) {
                     Text("Unknown")
                 }
                 .modifier(ButtonModifier(status: .unknown, isSelected: self.status == .unknown))
             }
-            Spacer()
         }
         .padding(.horizontal, 12)
-        .padding(.vertical, 4)
+        .padding(.vertical, 8)
+    }
+    
+    func changeStatus(status: Status) {
+        withAnimation {
+            self.status = status
+        }
     }
 }
 
@@ -66,12 +71,16 @@ struct ButtonModifier: ViewModifier {
     
     func body(content: Content) -> some View {
         content
-            .frame(maxWidth: status == .all ? 32 : .infinity)
-            .font(.system(size: 12))
-            .foregroundColor(status.statusColor().opacity(isSelected ? 1.0 : 0.75))
+            .frame(maxWidth: status == .all ? 38 : .infinity)
+            .font(.system(size: 14))
+            .foregroundColor(isSelected ? .white : status.statusColor().opacity(0.75))
+            .background(
+                RoundedRectangle(cornerRadius: 14)
+                    .fill(isSelected ? status.statusColor().opacity(0.50) : .white))
             .overlay(
                 RoundedRectangle(cornerRadius: 14)
                     .stroke(status.statusColor().opacity(isSelected ? 0.75 : 0.20), lineWidth: 2)
+                    
         )
     }
 }

@@ -122,7 +122,7 @@ enum Status: String, Codable {
         case .unknown:
             return .orange
         case .all:
-            return .black
+            return Color("Rick")
         }
     }
 }
