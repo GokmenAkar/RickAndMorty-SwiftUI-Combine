@@ -14,18 +14,16 @@ struct CharactersView: View {
     
     var body: some View {
         NavigationView {
-            ZStack {
-                VStack {
-                    if !viewModel.isSearchBarHidden {
-                        SearchBar(searchText: .constant(""))
-                    }
-                    List(0...viewModel.characters.results.count, id: \.self) { index in
-                        if index == self.viewModel.characters.results.count {
-                            LastCell(vm: self.viewModel)
-                        } else {
-                            NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
-                                CharacterCell(character: self.viewModel.characters.results[index])
-                            }
+            VStack {
+                if !viewModel.isSearchBarHidden {
+                    SearchBar(searchText: $viewModel.searchText)
+                }
+                List(0...viewModel.characters.results.count, id: \.self) { index in
+                    if index == self.viewModel.characters.results.count {
+                        LastCell(vm: self.viewModel)
+                    } else {
+                        NavigationLink(destination: DetailView(detail: self.viewModel.characters.results[index])) {
+                            CharacterCell(character: self.viewModel.characters.results[index])
                         }
                     }
                 }
@@ -34,9 +32,7 @@ struct CharactersView: View {
         }
         .gesture(DragGesture()
         .onChanged { value in
-            print("startY:", value.startLocation.y, "changeY:", value.location.y)
             withAnimation {
-
                 self.viewModel.hideSearchBar(startY: value.startLocation.y, changeY: value.location.y)
             }
             }
@@ -82,6 +78,7 @@ struct SearchBar : View {
         .background(colorScheme == .dark ? Color(.darkGray) : Color(.systemGray6))
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color.gray, lineWidth: 1))
         .padding(4)
+        .padding(.bottom, 0)
         
     }
 }

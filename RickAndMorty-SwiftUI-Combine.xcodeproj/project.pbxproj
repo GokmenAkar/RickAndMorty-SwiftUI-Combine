@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8B09258C242D20D2009991F5 /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09258B242D20D2009991F5 /* InfoView.swift */; };
 		8B09258E242D31D0009991F5 /* LastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B09258D242D31D0009991F5 /* LastCell.swift */; };
+		8B4C2512243203AB00BF6E03 /* RMSearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4C2511243203AB00BF6E03 /* RMSearchRequest.swift */; };
 		8B7779A92428EA27007E4BEA /* RMCharacterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */; };
 		8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBCB2428DDA60061DD3A /* EndPoints.swift */; };
 		8B94BBCE2428E1120061DD3A /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */; };
@@ -35,6 +36,7 @@
 		33ECFBC46BB0ED6280FE4AF4 /* Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig"; path = "Target Support Files/Pods-RickAndMorty-SwiftUI-Combine/Pods-RickAndMorty-SwiftUI-Combine.release.xcconfig"; sourceTree = "<group>"; };
 		8B09258B242D20D2009991F5 /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 		8B09258D242D31D0009991F5 /* LastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastCell.swift; sourceTree = "<group>"; };
+		8B4C2511243203AB00BF6E03 /* RMSearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMSearchRequest.swift; sourceTree = "<group>"; };
 		8B7779A82428EA27007E4BEA /* RMCharacterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCharacterViewModel.swift; sourceTree = "<group>"; };
 		8B94BBCB2428DDA60061DD3A /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		8B94BBCD2428E1120061DD3A /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				8B94BBD02428E2930061DD3A /* RMCharacterRequest.swift */,
+				8B4C2511243203AB00BF6E03 /* RMSearchRequest.swift */,
 			);
 			path = Request;
 			sourceTree = "<group>";
@@ -354,6 +357,7 @@
 				8B94BBD12428E2930061DD3A /* RMCharacterRequest.swift in Sources */,
 				8B09258C242D20D2009991F5 /* InfoView.swift in Sources */,
 				8B09258E242D31D0009991F5 /* LastCell.swift in Sources */,
+				8B4C2512243203AB00BF6E03 /* RMSearchRequest.swift in Sources */,
 				8BDE264A242A2C3600797556 /* CharacterCell.swift in Sources */,
 				8BA521702428D2B1009888AF /* SceneDelegate.swift in Sources */,
 				8B94BBCC2428DDA60061DD3A /* EndPoints.swift in Sources */,
