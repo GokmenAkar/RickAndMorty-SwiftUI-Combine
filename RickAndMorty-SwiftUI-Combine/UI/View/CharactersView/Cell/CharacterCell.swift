@@ -13,20 +13,30 @@ struct CharacterCell: View {
     var url: String
     var name: String
     
+    @State var isPressed: Bool = false
+    
     init(character: RMWorldResult) {
         url = character.image!
         name = character.name ?? "no name"
     }
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            HStack {
-                CircleImage(imageURL: url)
-                Text(name)
-                    .font(.headline)
-                    .foregroundColor(Color("Rick"))
+        ZStack {
+            VStack(alignment: .leading, spacing: 0) {
+                HStack {
+                    CircleImage(imageURL: url)
+                    Text(name)
+                        .font(.headline)
+                        .foregroundColor(Color("Rick"))
+                    Spacer()
+                }
+                Divider()
             }
-            Divider()
+            if isPressed {
+                withAnimation(.spring()) {
+                    PopOver()
+                }
+            }
         }
     }
 }

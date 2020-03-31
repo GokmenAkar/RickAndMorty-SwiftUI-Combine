@@ -58,8 +58,8 @@ struct RMWorld: Codable {
         
         return [
             RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
-            RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
-            RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
+            RMWorldResult(id: 1, name: "ricko", status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
+            RMWorldResult(id: 1, name: "tete", status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created),
             RMWorldResult(id: 1, name: name, status: status, species: species, type: type, gender: gender, origin: origin, location: location, image: image, url: url, created: created, dimension: "Dimension C-137", residents: residents, air_date: created)
         ]
     }

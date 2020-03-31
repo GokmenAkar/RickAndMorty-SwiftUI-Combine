@@ -10,23 +10,38 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct DetailView: View {
+    @Environment(\.presentationMode) var presentationMode
+    
     let detail: RMWorldResult!
     
     let normalSize = CGSize(width: 162, height: 162)
     let zoomSize = CGSize(width: 250, height: 250)
     
     @State var animateImage: Bool = false
+    
     var body: some View {
-        
+
             VStack(spacing: 12) {
-                CircleImage(imageURL: detail.image ?? "",
-                            imageSize: animateImage ? zoomSize : normalSize)
-                    .onTapGesture {
-                        withAnimation {
-                            self.animateImage.toggle()
+                ZStack {
+                    CircleImage(imageURL: detail.image ?? "",
+                                imageSize: animateImage ? zoomSize : normalSize)
+                        .onTapGesture {
+                            withAnimation {
+                                self.animateImage.toggle()
+                            }
+                    }
+                    GeometryReader { geo in
+                        Button(action: {
+                            self.presentationMode.wrappedValue.dismiss()
+                        }) {
+                            Image(systemName: "xmark.circle.fill")
+                            .font(.system(size: 28))
                         }
+                        .foregroundColor(Color("Rick"))
+                        .position(x: geo.size.width - 16, y: 15)
+                            
+                    }.frame(height: 200)
                 }
-                
                 Text(detail.name ?? "")
                     .font(.title)
                     .foregroundColor(.primary)
@@ -54,6 +69,6 @@ struct DetailView: View {
 
 struct DetailView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailView(detail: RMWorld.exampleData().first!).environment(\.colorScheme, .light)
+        DetailView(detail: RMWorld.exampleData()[1]).environment(\.colorScheme, .light)
     }
 }

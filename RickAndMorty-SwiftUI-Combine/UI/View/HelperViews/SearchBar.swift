@@ -13,6 +13,7 @@ struct SearchBar : View {
     @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
+        
         HStack {
             Image(systemName: "magnifyingglass").padding(12)
             
@@ -34,10 +35,16 @@ struct SearchBar : View {
             }
         }
         .foregroundColor(colorScheme == .dark ? .white : Color("Rick"))
-        .background(colorScheme == .dark ? Color(.darkGray) : Color(.systemGray6))
+        .background(self.colorScheme == .dark ? Color(.darkGray).cornerRadius(12) : Color(.systemGray6).cornerRadius(12))
         .overlay(RoundedRectangle(cornerRadius: 12).stroke(Color("Rick"), lineWidth: 1))
         .padding(4)
         .padding(.bottom, 0)
         
+    }
+}
+
+struct SearchBar_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchBar(searchText: .constant("")).previewLayout(.sizeThatFits)
     }
 }
