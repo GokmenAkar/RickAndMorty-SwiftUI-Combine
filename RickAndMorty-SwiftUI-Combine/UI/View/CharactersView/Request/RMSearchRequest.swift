@@ -11,7 +11,7 @@ import Foundation
 class RMSearchRequest: BaseAPIRequest<RMWorld> {
     var name: String = ""
     var status: String = ""
-    
+    var page: Int = 0 
     override var endPoint: EndPoints {
         return .character
     }

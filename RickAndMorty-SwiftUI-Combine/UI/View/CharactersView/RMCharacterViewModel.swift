@@ -73,12 +73,13 @@ final class RMCharacterViewModel: ObservableObject {
         if isLoading { return }
         isLoading = true
         
+        searchRequest.page  += 1
         searchRequest.name   = text
         searchRequest.status = status == .all ? "" : status.rawValue
-
+        
         cancellable = service
             .baseRequest(request: searchRequest)
-            .debounce(for: 0.5, scheduler: RunLoop.main)
+            .receive(on: RunLoop.main)
             .catch { _ in  Just(self.characters) }
             .sink(receiveCompletion: { _ in
                 self.isLoading = false
