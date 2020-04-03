@@ -16,13 +16,15 @@ struct CharactersView: View {
     
     @State private var selectedRM: RMWorldResult!
     
+    @State private var newSize: CGSize = .zero
     var body: some View {
-        ZStack(alignment: .topLeading) {
+        ZStack {
+        VStack(spacing: 0) {
             VStack {
                 SearchBar(searchText: self.$viewModel.searchText)
                 StatusView(status: self.$viewModel.status)
                 Divider()
-            }.zIndex(1)
+            }
             List {
                 ForEach(0...self.viewModel.characters.results.count, id: \.self) { index in
                     HStack {
@@ -34,6 +36,7 @@ struct CharactersView: View {
                                     self.selectedRM = self.viewModel.characters.results[index]
                                     self.showDetail = true
                             }
+                            
                             .sheet(isPresented: self.$showDetail, content: {
                                 DetailView(detail: self.selectedRM)
                             })
@@ -41,9 +44,9 @@ struct CharactersView: View {
                     }
                 }
             }
-            .offset(y: 96)
         }
-        
+        }
+       
         .onAppear {
             self.viewModel.getCharacters()
         }
@@ -53,5 +56,24 @@ struct CharactersView: View {
 struct CharactersView_Previews: PreviewProvider {
     static var previews: some View {
         CharactersView()
+    }
+}
+
+struct SizePreferenceKey: PreferenceKey {
+    static var defaultValue: CGSize = .zero
+    static func reduce(value: inout CGSize, nextValue: () -> CGSize) {
+        value = nextValue()
+    }
+}
+
+struct SizeModifier: ViewModifier {
+    private var sizeView: some View {
+        GeometryReader { geometry in
+            Color.clear.preference(key: SizePreferenceKey.self, value: geometry.size)
+        }
+    }
+    func body(content: Content) -> some View {
+        content.background(sizeView
+        )
     }
 }

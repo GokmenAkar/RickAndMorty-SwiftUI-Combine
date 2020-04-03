@@ -65,6 +65,12 @@ struct RMWorld: Codable {
     }
 }
 
+extension RMWorld: Equatable {
+    static func == (lhs: RMWorld, rhs: RMWorld) -> Bool {
+        lhs.results.last?.id == rhs.results.last?.id && lhs.results.last?.name == rhs.results.last?.name
+    }
+    
+}
 // MARK: - RMWorldResult
 struct RMWorldResult: Codable, Identifiable {
     let id: Int

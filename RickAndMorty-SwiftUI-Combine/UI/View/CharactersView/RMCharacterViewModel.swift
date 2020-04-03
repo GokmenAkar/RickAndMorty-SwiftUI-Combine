@@ -33,6 +33,8 @@ final class RMCharacterViewModel: ObservableObject {
     }
     
     var isLoading:Bool = false
+    var isSearchActive: Bool = false
+    var showLoading: Bool = false
     
     func getCharacters() {
         if isLoading { return }
@@ -43,6 +45,7 @@ final class RMCharacterViewModel: ObservableObject {
         cancellable = service
             .baseRequest(request: request)
             .receive(on: RunLoop.main)
+            .removeDuplicates { $0 == $1 }
             .catch { _ in Just(self.characters)}
             .sink(receiveValue: { [weak self] (value) in
                 guard let self = self else { return }
@@ -52,6 +55,7 @@ final class RMCharacterViewModel: ObservableObject {
                 if self.status != .all {
                     self.characters.results += value.results.filter { $0.status == self.status }
                 } else {
+                    self.showLoading = self.characters.results.last?.id == value.results.last?.id
                     self.characters.results += value.results
                 }
             })
@@ -70,10 +74,11 @@ final class RMCharacterViewModel: ObservableObject {
     }
     
     func searchCharacter(text: String) {
+        isSearchActive = text != ""
+        
         if isLoading { return }
         isLoading = true
         
-        searchRequest.page  += 1
         searchRequest.name   = text
         searchRequest.status = status == .all ? "" : status.rawValue
         

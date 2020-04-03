@@ -24,7 +24,7 @@ struct CharacterCell: View {
         ZStack {
             VStack(alignment: .leading, spacing: 0) {
                 HStack {
-                    CircleImage(imageURL: url)
+                    CircleImage(imageURL: url).modifier(ShadowModifier())
                     Text(name)
                         .font(.headline)
                         .foregroundColor(Color("Rick"))

@@ -19,6 +19,7 @@ struct CircleImage: View {
         self.url = URL(string: imageURL)!
     }
     
+    let gradient = LinearGradient(gradient: Gradient(colors:[ Color("Rick"), Color("RMGreen")]), startPoint: .topLeading, endPoint: .bottomTrailing)
     var body: some View {
         WebImage(url: url)
             .onSuccess { image, cacheType in
@@ -35,8 +36,8 @@ struct CircleImage: View {
             .aspectRatio(contentMode: .fill)
             .frame(width: imageSize.width, height: imageSize.height, alignment: .center)
             .clipShape(Circle())
-            .overlay(Circle().stroke(Color(red: 151/255, green: 206/255, blue: 76/255), lineWidth: 4))
-            .shadow(radius: 8)
+//            .overlay(Circle().stroke(gradient, lineWidth: 4))
+//            .shadow(radius: 8)
             .padding(8)
     }
 }

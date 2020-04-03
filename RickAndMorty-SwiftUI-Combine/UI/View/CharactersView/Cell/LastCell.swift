@@ -35,7 +35,11 @@ struct LastCell: View {
                     .onAppear {
                         self.scale = 1.3
                         self.degree = 720
-                        self.vm.getCharacters()
+                        if self.vm.isSearchActive {
+                            self.vm.searchCharacter(text: self.vm.searchText)
+                        } else {
+                            self.vm.getCharacters()
+                        }
                 }
                 Text("Loading...")
         }
